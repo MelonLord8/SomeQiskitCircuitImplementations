@@ -12,7 +12,7 @@ ZZFeatureMap = cl.create_ZZFeatureMap(dev)
 TwoLocal = cl.create_TwoLocal(dev, num_rep = 2, entanglement_type = cl.SCA)
 
 data = np.ones(shape = (4,))
-# Params must be in shape (number of repitions + 1, number of wires))
+# Params must be in shape (number of repetions + 1, number of wires))
 params = np.random.default_rng().random(size = (3, 4))
 
 @qml.qnode(dev)
