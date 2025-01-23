@@ -7,7 +7,7 @@ PAIRWISE = "pairwise"
 CIRCULAR = "circular"
 SCA = "sca"
 
-def create_TwoLocal(device, num_rep = 1, entanglement_type = LINEAR):
+def create_TwoLocal(device, num_reps = 1, entanglement_type = LINEAR):
     """
     Creates a circuit identical to qiskit.circuit.library.TwoLocal
 
@@ -62,10 +62,10 @@ def create_TwoLocal(device, num_rep = 1, entanglement_type = LINEAR):
         for i in range(num_wires):
             qml.PhaseShift(params[i], wires[i])
     def two_local(params):
-        if (params.shape != (num_rep + 1, num_wires)):
-            raise ValueError(f"Parameters not of correct size, expected {(num_rep + 1, num_wires)}, got {params.shape}")
+        if (params.shape != (num_reps + 1, num_wires)):
+            raise ValueError(f"Parameters not of correct size, expected {(num_reps + 1, num_wires)}, got {params.shape}")
         phase_rotation(params[0])
-        for layer in range(1, num_rep + 1):
+        for layer in range(1, num_reps + 1):
             if entanglement_type == SCA:
                 sca_entanglement_layer(layer)
             else:
